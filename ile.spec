@@ -7,7 +7,7 @@ Summary:	Email notify for Jabberd2 (ILoveEmail)
 Summary(pl):	Modu³ powiadamiania o poczcie dla Jabberd2
 Name:		ile
 Version:	0.4
-Release:	1	
+Release:	1.1
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://jabberstudio.org/projects/ile/releases/%{name}-%{version}.tar.gz
@@ -15,6 +15,7 @@ Source0:	http://jabberstudio.org/projects/ile/releases/%{name}-%{version}.tar.gz
 Source1:	jabber-ile-transport.init
 Source2:	%{name}.sh
 Patch0:		%{name}-jabberd2.patch
+Patch1:		%{name}-config.patch
 URL:		http://jabberstudio.org/projects/ile
 BuildRequires:	rpm-perlprov
 Requires(pre):	jabber-common
@@ -32,11 +33,12 @@ I Love Email - powiadamianie o poczcie dla Jabberd2.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
+%patch1 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_sysconfdir}/jabber,%{_sbindir},/etc/rc.d/init.d,/var/lib/jabber/ile}
+install -d $RPM_BUILD_ROOT{%{_sysconfdir}/jabber,%{_sbindir},/etc/rc.d/init.d,/var/lib/jabber/ile,/var/log/ile}
 
 install ile.xml $RPM_BUILD_ROOT%{_sysconfdir}/jabber/ile.xml
 install ile.pl $RPM_BUILD_ROOT%{_sbindir}
@@ -76,3 +78,4 @@ fi
 %attr(640,root,jabber) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/jabber/ile.xml
 %attr(754,root,root) /etc/rc.d/init.d/jabber-ile-transport
 %attr(770,root,jabber) /var/lib/jabber/ile
+%attr(770,root,jabber) /var/log/ile
