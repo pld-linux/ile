@@ -1,0 +1,46 @@
+diff -ruN ile-0.4.old/ile.xml ile-0.4/ile.xml
+--- ile-0.4.old/ile.xml	2005-02-10 20:17:05.431743368 +0100
++++ ile-0.4/ile.xml	2005-02-10 22:56:23.794651336 +0100
+@@ -1,8 +1,8 @@
+ <config>
+   <jabber>
+      <server>myhost.com</server> <!-- your jabber server -->
+-     <port>31515</port> <!-- the port the jabber server is waiting for us -->
+-     <secret>hallo</secret> <!-- the shared secret -->
++     <port>5347</port> <!-- the port the jabber server is waiting for us -->
++     <secret>secret</secret> <!-- the shared secret -->
+      <service>ile.myhost.com</service> <!-- our name -->
+      <connectsleep>5</connectsleep> <!-- seconds to wait if we get disconnected -->
+      <language>en</language> <!-- language of the messages -->
+@@ -24,13 +24,13 @@
+   </mail>
+ 
+   <files> <!-- where to put the data -->
+-    <users>users.db</users>
+-    <passwords>passwords.db</passwords>
+-    <hosts>hosts.db</hosts>
+-    <types>types.db</types>
+-    <notifyxa>notifyxa.db</notifyxa>
+-    <notifydnd>notifydnd.db</notifydnd>
+-    <urls>urls.db</urls>
++	  <users>/var/lib/jabber/ile/users.db</users>
++	  <passwords>/var/lib/jabber/ile/passwords.db</passwords>
++	  <hosts>/var/lib/jabber/ile/hosts.db</hosts>
++	  <types>/var/lib/jabber/ile/types.db</types>
++	  <notifyxa>/var/lib/jabber/ile/notifyxa.db</notifyxa>
++	  <notifydnd>/var/lib/jabber/ile/notifydnd.db</notifydnd>
++	  <urls>/var/lib/jabber/ile/urls.db</urls>
+   </files>
+ 
+   <form> <!-- messages sent to the user -->
+--- ile-0.4/ile.xml~	2005-02-18 13:15:10.985551024 +0100
++++ ile-0.4/ile.xml	2005-02-18 13:16:47.621860072 +0100
+@@ -14,7 +14,7 @@
+   </jabber>
+ 
+   <debug>
+-    <file>ile.log</file>
++	  <file>/var/log/jabber/ile.log</file>
+     <level>1</level> <!-- man Net::Jabber::Debug -->
+   </debug>
+ 
