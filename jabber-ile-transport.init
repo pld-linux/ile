@@ -1,0 +1,61 @@
+#!/bin/sh
+# Jabber ILE transport
+#
+# chkconfig:	345 85 05
+# description:	Jabber ILE transport
+
+# Source function library
+. /etc/rc.d/init.d/functions
+
+# Get network config
+. /etc/sysconfig/network
+
+# Check that networking is up.
+if is_yes "${NETWORKING}"; then
+	if [ ! -f /var/lock/subsys/network -a "$1" != stop -a "$1" != status ]; then
+		msg_network_down jabber-ile-transport
+		exit 1
+	fi
+else
+	exit 0
+fi
+
+RETVAL=0
+# See how we were called.
+case "$1" in
+  start)
+	# Check if the service is already running?
+	if [ ! -f /var/lock/subsys/jabber-ile-transport ]; then
+		msg_starting "Jabber ILE transport"
+		daemon ile.sh
+		RETVAL=$?
+		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/jabber-ile-transport
+	else
+		msg_already_running jabber-ile-transport
+	fi
+	;;
+  stop)
+	# Check if the service is already running?
+	if [ -f /var/lock/subsys/jabber-ile-transport ]; then
+		msg_stopping  "Jabber ILE transport"
+		killproc ile.pl
+		rm -f /var/lock/subsys/jabber-ile-transport
+	else
+		msg_not_running jabber-ile-transport
+	fi
+	;;
+  restart|force-reload)
+	$0 stop
+	$0 start
+	exit $?
+	;;
+  status)
+	status ile.pl
+	exit $?
+	;;
+  *)
+	msg_usage "$0 {start|stop|restart|force-reload|status}"
+	exit 3
+esac
+
+exit $RETVAL
