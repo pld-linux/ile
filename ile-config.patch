@@ -40,7 +40,7 @@ diff -ruN ile-0.4.old/ile.xml ile-0.4/ile.xml
  
    <debug>
 -    <file>ile.log</file>
-+	  <file>/var/log/jabber/ile.log</file>
++	  <file>/var/log/ile/ile.log</file>
      <level>1</level> <!-- man Net::Jabber::Debug -->
    </debug>
  
