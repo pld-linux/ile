@@ -1,8 +1,6 @@
 #
 # TODO:
 # - more clean init script ? (especially ile.sh),
-# - description
-# - cleanups :)
 
 %include        /usr/lib/rpm/macros.perl
 Summary:	Email notify for Jabberd2 (ILoveEmail)
@@ -18,7 +16,7 @@ Source1:	jabber-ile-transport.init
 Source2:	%{name}.sh
 Patch0:		%{name}-jabberd2.patch
 URL:		http://jabberstudio.org/projects/ile
-BuildRequires:  rpm-perlprov
+BuildRequires:	rpm-perlprov
 Requires(pre):	jabber-common
 Requires(post,preun):	/sbin/chkconfig
 Requires(post):	/usr/bin/perl
