@@ -7,7 +7,7 @@ Summary:	Email notify for Jabberd2 (ILoveEmail)
 Summary(pl):	Modu³ powiadamiania o poczcie dla Jabberd2
 Name:		ile
 Version:	0.4
-Release:	0.9
+Release:	1	
 License:	GPL
 Group:		Applications/Communications
 Source0:	http://jabberstudio.org/projects/ile/releases/%{name}-%{version}.tar.gz
