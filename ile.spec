@@ -3,6 +3,7 @@
 # - more clean init script ? (especially ile.sh),
 # - description
 # - cleanups :)
+# - run from user Jabber,
 
 %include        /usr/lib/rpm/macros.perl
 Summary:	Email notify for Jabberd2 (ILoveEmail)
