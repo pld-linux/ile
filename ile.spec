@@ -18,22 +18,23 @@ Source1:	jabber-ile-transport.init
 Source2:	%{name}.sh
 Patch0:		%{name}-jabberd2.patch
 URL:		http://jabberstudio.org/projects/ile
+BuildRequires:  rpm-perlprov
 Requires(pre):	jabber-common
 Requires(post,preun):	/sbin/chkconfig
 Requires(post):	/usr/bin/perl
 Requires:	jabberd >= 2.0
-BuildRequires:  rpm-perlprov
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-I Love Email
+I Love Email - email notify for Jabberd2.
+
+%description -l pl
+I Love Email - powiadamianie o poczcie dla Jabberd2.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 %patch -p1
-
-%build
 
 %install
 rm -rf $RPM_BUILD_ROOT
