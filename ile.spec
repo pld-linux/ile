@@ -13,15 +13,15 @@ License:	GPL
 Group:		Applications/Communications
 Source0:	http://jabberstudio.org/projects/ile/releases/%{name}-%{version}.tar.gz
 # Source0-md5:	120bff223043e0af1da48aa321206836
-Source1:	jabber-ile-transport.init
+Source1:	jabber-%{name}-transport.init
 Source2:	%{name}.sh
 Patch0:		%{name}-jabberd2.patch
 Patch1:		%{name}-config.patch
 URL:		http://jabberstudio.org/projects/ile
 BuildRequires:	rpm-perlprov
-Requires(pre):	jabber-common
-Requires(post,preun):	/sbin/chkconfig
 Requires(post):	/usr/bin/perl
+Requires(post,preun):	/sbin/chkconfig
+Requires(pre):	jabber-common
 Requires:	jabberd >= 2.0
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -76,7 +76,7 @@ fi
 %defattr(644,root,root,755)
 %doc ChangeLog
 %attr(755,root,root) %{_sbindir}/*
-%attr(640,root,jabber) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/jabber/ile.xml
+%attr(640,root,jabber) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/jabber/ile.xml
 %attr(754,root,root) /etc/rc.d/init.d/jabber-ile-transport
 %attr(770,root,jabber) /var/lib/jabber/ile
 %attr(770,root,jabber) /var/log/ile
