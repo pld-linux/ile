@@ -19,7 +19,7 @@ Patch0:		%{name}-jabberd2.patch
 Patch1:		%{name}-config.patch
 URL:		http://jabberstudio.org/projects/ile
 BuildRequires:	rpm-perlprov
-Requires(post):	/usr/bin/perl
+Requires(post):	sed >= 4.0
 Requires(post,preun):	/sbin/chkconfig
 Requires(pre):	jabber-common
 Requires:	jabberd >= 2.0
@@ -50,11 +50,11 @@ install %{SOURCE2} $RPM_BUILD_ROOT%{_sbindir}
 rm -rf $RPM_BUILD_ROOT
 
 %post
-if [ -f /etc/jabber/secret ] ; then
-	SECRET=`cat /etc/jabber/secret`
+if [ -f %{_sysconfdir}/jabber/secret ] ; then
+	SECRET=`cat %{_sysconfdir}/jabber/secret`
 	if [ -n "$SECRET" ] ; then
 		echo "Updating component authentication secret in ile.xml..."
-		perl -pi -e "s/>secret</>$SECRET</" /etc/jabber/ile.xml
+		%{__sed} -i -e "s/>secret</>$SECRET</" /etc/jabber/ile.xml
 	fi
 fi
 /sbin/chkconfig --add jabber-ile-transport
