@@ -5,7 +5,7 @@
 #
 %include	/usr/lib/rpm/macros.perl
 Summary:	Email notify for Jabberd2 (ILoveEmail)
-Summary(pl):	Modu≥ powiadamiania o poczcie dla Jabberd2
+Summary(pl.UTF-8):   Modu≈Ç powiadamiania o poczcie dla Jabberd2
 Name:		ile
 Version:	0.4
 Release:	1.1
@@ -29,7 +29,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 I Love Email - email notify for Jabberd2.
 
-%description -l pl
+%description -l pl.UTF-8
 I Love Email - powiadamianie o poczcie dla Jabberd2.
 
 %prep
