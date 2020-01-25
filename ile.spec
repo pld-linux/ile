@@ -3,7 +3,6 @@
 # - more clean init script ? (especially ile.sh),
 # BROKEN!!! DOESNT WORK!
 #
-%include	/usr/lib/rpm/macros.perl
 Summary:	Email notify for Jabberd2 (ILoveEmail)
 Summary(pl.UTF-8):	Moduł powiadamiania o poczcie dla Jabberd2
 Name:		ile
